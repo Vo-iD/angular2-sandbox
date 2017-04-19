@@ -1,20 +1,22 @@
 import {Component} from 'angular2/core';
-import {GithubUsersComponent} from './components/github/github-users.component';
-/// <reference path="angular2/typings/browser.d" />
+import {RouteConfig, RouterOutlet} from 'angular2/router';
+
+import {AlbumsComponent} from './components/album/albums.component';
+import {ContactComponent} from './components/contact/contact.component';
+
+@RouteConfig([
+    { path: '/albums', name: 'Albums', component: AlbumsComponent, useAsDefault: true },
+    { path: '/contact', name: 'Contact', component: ContactComponent },
+    { path: '/*other', name: 'Other', redirectTo: ['Albums'] },
+])
 
 @Component({
     selector: 'my-app',
-    template: `
-    <github-users></github-users>
-    `,
-    directives: [GithubUsersComponent]
+    templateUrl: '/app/app.component.html',
+    directives: [RouterOutlet]
 })
 
 export class AppComponent {
-    isLoading = true;
-
-    constructor() {
-    }
 }
 
 /*
