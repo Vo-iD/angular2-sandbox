@@ -1,0 +1,64 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form.form)">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input 
+            ngControl="nameInput"
+            #nameInput ="ngForm"
+            id="name" 
+            class="form-control" 
+            type="text"
+            required
+            minlength="3">
+        <div *ngIf="!nameInput.valid && nameInput.errors">
+            <div *ngIf="nameInput.touched && nameInput.errors.required" class="alert alert-danger">
+                Name field is required
+            </div>
+            <div *ngIf="nameInput.touched && nameInput.errors.minlength" class="alert alert-danger">
+                Name field should be at least {{nameInput.errors.minlength.requiredLength}} characters
+            </div> 
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+            ngControl="emailInput"
+            #emailInput ="ngForm"
+            id="email" 
+            class="form-control" 
+            type="text"
+            required
+            minlength="6">
+        <div *ngIf="!emailInput.valid && emailInput.errors">
+            <div *ngIf="emailInput.touched && emailInput.errors.required" class="alert alert-danger">
+                Email field is required
+            </div>
+            <div *ngIf="emailInput.touched && emailInput.errors.minlength" class="alert alert-danger">
+                Email field should be at least {{emailInput.errors.minlength.requiredLength}} characters
+            </div> 
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="emailFrequency">Frequency of emails:</label>
+        <select 
+            ngControl="emailFrequencySelect"
+            #emailFrequencySelect ="ngForm"
+            class="form-control" 
+            id="emailFrequency" 
+            required>
+            <option></option>
+            <option>Daily</option>
+            <option>Weekly</option>
+            <option>Monthly</option>
+        </select>
+
+        <div *ngIf="!emailFrequencySelect.valid && emailInput.errors">
+            <div *ngIf="emailFrequencySelect.touched && emailInput.errors.required" class="alert alert-danger">
+                Email frequency should be selected
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" [disabled]="!form.valid"type="submit">Subscribe</button>
+</form>

@@ -1,0 +1,15 @@
+<div class="media tweet">
+    <div class="media-left">
+        <img class="media-object tweet-image" src="{{tweetMetainfo.photoUrl}}" alt="Tweet owner image">
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading tweet-title">
+            {{tweetMetainfo.title}}
+            <span class="tweet-owner">@{{tweetMetainfo.owner}}</span>
+        </h4>
+        <span class="tweet-content">{{tweetMetainfo.content}}</span>
+        <div>
+            <like [isLiked]="tweetMetainfo.liked" [likesCount]="tweetMetainfo.likesCount"></like>
+        </div>
+    </div>
+</div>

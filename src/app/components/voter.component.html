@@ -1,0 +1,5 @@
+<div class="voter-wrapper">
+    <i class="glyphicon glyphicon-menu-up" [class.voted]="myVote == 1" (click)="voteUp()"></i>
+    <div>{{voteCount}}</div>
+    <i class="glyphicon glyphicon-menu-down" [class.voted]="myVote == -1" (click)="voteDown()"></i>
+</div>
